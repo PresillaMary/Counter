@@ -41,15 +41,47 @@ A Synchronous counter is the counter in which the clock input with all the flip-
 
 
 ## Program:
+~~~
+1.
+module exp6(clk,q1,q2,q3,q4);
+input clk;
+output reg q1,q2,q3,q4;
+always@(posedge clk)
+begin
+  q4=(q1&q2&q3)^q4;
+  q3=(q1&q2)^q3;
+  q2=q1^q2;
+  q1=1^q1;
+end
+endmodule
+~~~
+~~~
+2.
+module exp6b(clk,q1,q2,q3,q4);
+input clk;
+output reg q1,q2,q3,q4;
+always @(posedge clk)
+begin
+q4=((~q3)&(~q2)&(~q1))^q4;
+q3=((~q2)&(~q1))^q3;
+q2=(~q1)^q2;
+q1=1^q1;
+end
+endmodule
+~~~
 
 
 ## RTL Schematic:
+![exp 6 a (2)](https://github.com/PresillaMary/Counter/assets/129305503/a48ecc33-f7fd-4eac-b110-df6222b36c4e)
+![6b](https://github.com/PresillaMary/Counter/assets/129305503/8b3d1d25-2e1a-429e-a5d7-f07ee9d55f25)
 
 
 
 
 ## Timing Diagram:
+![exp 6a](https://github.com/PresillaMary/Counter/assets/129305503/fecc738c-5092-4b2c-9fb3-e9ed9801afd9)
 
+![6b (2)](https://github.com/PresillaMary/Counter/assets/129305503/2e794d4e-765c-456e-9c95-54bfa624f04f)
 
 
 ## Result:
